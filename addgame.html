@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>My Electron Frameless Window</title>
+        <link rel="stylesheet" href="main.css">
+        <link rel="stylesheet" href="wizard.css">
+    </head>
+    <body>
+        <div id="title-bar">
+             <div id="title">
+                 <span style="vertical-align: middle; color:var(--font-color)">Create Mod</span>
+             </div>
+             <div id="title-bar-btns">
+                
+                <a id="close-btn" href="#"><svg class="ctrl" xmlns="http://www.w3.org/2000/svg" width="18px" height="18px" viewBox="0 0 24 24" fill="none" stroke="#4f4f4f" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-x"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg></a>
+             </div>
+        </div>
+
+        <div class="body">
+            <div id="screen1">
+                <p>Custom files to add:</p>
+                <div class="screenmain">
+                    <div class="tablecontainer">
+                        <table>
+                            <tr>
+                                <td>Mod1.wad</td>
+                            </tr>
+                            <tr>
+                                <td>Modpack.zip</td>
+                            </tr>
+                            <tr>
+                                <td>Mod3.pk3</td>
+                            </tr>
+
+                        </table> 
+                    </div>
+                    <div class="controls">
+                        <button>+</button>
+                        <button>-</button>
+                        <button>^</button>
+                        <button>v</button>
+                    </div>
+                    
+                </div>
+                <i>Supported filetypes: .zip, .pk3, .wad</i>
+            </div>
+        </div>
+        <div class="buttons">
+            <button id="next-btn">Next</button>
+            <button id="cancel-btn">Cancel</button>
+        </div>
+        <script>
+        (function () {
+            // Retrieve remote BrowserWindow
+            const {ipcRenderer} = require('electron');
+            var screen = 0
+
+            function init() {
+                document.getElementById("cancel-btn").addEventListener("click", (e) => {
+                    if(!screen == 0){
+                        document.getElementById("screen1").style = ""
+                        document.getElementById("mod").style = "display:none;"
+                        screen = 0
+                    }else{
+                        console.log("Noted your request to close.")
+                    }
+                });
+                document.getElementById("next-btn").addEventListener("click", (e) => {
+                    if(screen == 0){
+                        document.getElementById("screen1").style = "display:none;"
+                        document.getElementById("mod").style = ""
+                        screen = 1
+                        document.getElementById("cancel-btn").innerHTML = "Back"
+                    }else{
+                        console.log("nothin to do here just yet")
+                    }
+                });
+
+                document.getElementById("close-btn").addEventListener("click", (e) => {
+                    window.close()
+                    ipcRenderer.send('removeOverlay')
+                });
+            };
+            
+            document.onreadystatechange =  () => {
+                if (document.readyState == "complete") {
+                    init();
+                }
+            };
+        })();
+        </script>
+    </body>
+</html>

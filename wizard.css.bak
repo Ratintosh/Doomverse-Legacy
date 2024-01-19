@@ -1,0 +1,156 @@
+/* The container */
+.container {
+    display: block;
+    position: relative;
+    padding-left: 35px;
+    margin-bottom: 12px;
+    cursor: pointer;
+    font-size: 13px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+/* Hide the browser's default radio button */
+.container input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+}
+
+/* Create a custom radio button */
+.checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 14px;
+    width: 14px;
+    background-color: var(--link-idle);
+    border-radius: 50%;
+}
+
+/* On mouse-over, add a grey background color */
+.container:hover input ~ .checkmark {
+    background-color: var(--font-color);
+}
+
+/* When the radio button is checked, add a blue background */
+.container input:checked ~ .checkmark {
+    background-color: var(--theme-purple);
+}
+
+/* Create the indicator (the dot/circle - hidden when not checked) */
+.checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+/* Show the indicator (dot/circle) when checked */
+.container input:checked ~ .checkmark:after {
+    display: block;
+}
+
+/* Style the indicator (dot/circle) */
+.container .checkmark:after {
+    top: 3px;
+    left: 3px;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--font-color);
+}
+.body {
+    padding-left:20px;
+    color:var(--font-color);
+}
+
+p{
+    font-size:14px;
+}
+
+i {
+    font-size:10px;
+}
+.buttons {
+    width:90%;
+    position:absolute;
+    bottom:0;
+    padding-bottom:30px;
+}
+
+.buttons button {
+    float: right;
+}
+
+
+button {
+    padding:10px;
+	box-shadow:inset 0px 1px 0px 0px #565b6b;
+	background:linear-gradient(to bottom, #454a59 5%, #2b2d36 100%);
+	background-color:#454a59;
+	border:1px solid #303238;
+	cursor:pointer;
+	color:var(--font-color);
+	font-size:13px;
+	padding:6px 12px;
+	text-decoration:none;
+}
+
+.controls{
+    float: left;
+    padding-right:20px;
+    text-align: center;
+}
+.controls button{
+    width:32px;
+}
+
+button:hover {
+	background:linear-gradient(to bottom, #2b2d36 5%, #454a59 100%);
+	background-color:#2b2d36;
+}
+button:active {
+	position:relative;
+	top:1px;
+}
+
+/*table css*/
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+td, th {
+    background-color: #2b2d36;
+    text-align: left;
+    padding: 8px;
+    height:10%;
+    font-size:14px;
+}
+
+tr:nth-child(even) {
+    background-color: #dddddd;
+}
+
+tr svg{
+    width:14px;
+    height:14px;
+}
+
+.screenmain{
+    display: flex;
+}
+
+.controls{
+    padding-left:10px;
+    width: 24px;
+}
+.tablecontainer{
+    background-color: #1e2027;
+    height:300px;
+    overflow:auto;
+    flex-grow:1;
+}

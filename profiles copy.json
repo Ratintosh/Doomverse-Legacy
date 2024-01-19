@@ -1,0 +1,103 @@
+{
+	"Doom 2": {
+		"tags": [
+			"doom2",
+			"vanilla"
+		],
+		"metadata": {
+			"name": "Doom 2",
+			"author": "ID Software",
+			"year": "1996",
+			"grid": "thumbs/doom2.jpg"
+		},
+		"game": {
+			"sourceport": "~/doomhub/ports/gzdoom-4-8-2-macOS/GZDoom.app/Contents/MacOS/gzdoom",
+			"iwad": "~/doomhub/iwads/DOOM2.WAD",
+            "modded":false,
+			"mods": {
+
+			},
+			"-config": "~/path/to/config"
+		},
+
+		"opts": {
+			"audio": {
+				"enableSounds": true,
+				"-nosound": false,
+
+				"-nosfx": false,
+				"-nomusic": false
+			},
+
+			"gameplay": {
+				"-map": "",
+				"-skill": 1,
+				"-nomonsters": false,
+				"-fast": false,
+				"-respawn": false
+			},
+
+			"video": {
+				"-width": null,
+				"-height": null,
+				"+fullscreen": true
+			},
+			"+vid_rendermode": null,
+
+			"custom": ""
+		}
+
+	},
+
+    "Brutal BTSX": {
+		"tags": [
+			"doom2",
+			"modded"
+		],
+		"metadata": {
+			"name": "Brutal BTSX",
+			"author": "BTSX Team",
+			"year": "2012 i think",
+			"grid": "thumbs/btsx.jpg"
+		},
+		"game": {
+			"sourceport": "~/doomhub/ports/gzdoom-4-8-2-macOS/GZDoom.app/Contents/MacOS/gzdoom",
+			"iwad": "~/doomhub/iwads/DOOM2.WAD",
+            "modded":true,
+			"mods": [
+                "~/doomhub/games/brutal-btsx/btsx_e1a.wad",
+                "~/doomhub/games/brutal-btsx/btsx_e1b.wad",
+                "~/doomhub/games/brutal-btsx/BrutalDoomPlatinumv3.0.pk3"
+            ],
+			"-config": "~/path/to/config"
+		},
+
+		"opts": {
+			"audio": {
+				"enableSounds": true,
+				"-nosound": false,
+
+				"-nosfx": false,
+				"-nomusic": false
+			},
+
+			"gameplay": {
+				"-map": "",
+				"-skill": 1,
+				"-nomonsters": false,
+				"-fast": false,
+				"-respawn": false
+			},
+
+			"video": {
+				"-width": null,
+				"-height": null,
+				"+fullscreen": true
+			},
+			"+vid_rendermode": null,
+
+			"custom": ""
+		}
+
+	}
+}

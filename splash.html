@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            body {
+                background-color: rgb(34, 36, 43);
+                text-align:center
+            }
+            h1, p {
+                color:white;
+            }
+
+        </style>
+    </head>
+    <body>
+        <h1>DoomHub</h1>
+        <p id="status"></p>
+        <script>
+            const { ipcRenderer } = require('electron')
+
+            ipcRenderer.on('statusUpdate', (event, message) => {
+                document.getElementById('status').innerHTML += '<p>' + message + '</p>'
+            });
+            ipcRenderer.on('statusUpdateErr', (event, message) => {
+                document.getElementById('status').innerHTML += `<p style='color:red'>` + message + `</p>`
+            });
+        </script>
+    </body>
+</html>

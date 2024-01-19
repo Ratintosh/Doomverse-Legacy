@@ -1,2 +1,1 @@
-# Doomverse
-Open Source Launcher for DOOM
+# doom-launcher-devel

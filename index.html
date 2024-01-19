@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>DoomHub</title>
+        <link rel="stylesheet" href="main.css">
+        <link rel="stylesheet" href="wizard.css">
+    </head>
+    <body>
+        <div id="overlay" style="display:none">
+            <div class="wizard">
+                <div class="wizardTitle"><p>Mod Editor</p></div>
+                <div class="wizardBody">
+                    <div class="parent">
+                        <div class="iwads">
+                            <fieldset class="fieldmain">
+                                <legend>Files:</legend>
+                                <div class="filesContainer">
+                                    <ul class="filesList">
+                                        <li class="file">Hi</li>
+                                        <li class="file">Hi</li>
+                                        <li class="file">Hi</li>
+                                        <li class="file">Hi</li>
+                                    </ul>
+                                </div>
+                            </fieldset>
+                        </div>
+                        <div class="content">
+                            <fieldset class="fieldmain">
+                                <legend>Launch Options:</legend>
+                                <fieldset>
+                                    <legend>Gameplay:</legend>
+                                    <label for="-iwad">Base Game:</label>
+                                    <select name="-iwad" id="-iwad">
+                                        <option value="doom.wad">Doom 1 (Not Found)</option>
+                                        <option value="doom2.wad">Doom 2 (Not Found)</option>
+                                        <option value="custom">Other</option>
+                                    </select>
+                                    <br>
+                                    <input type="checkbox" id="-nomonsters" name="-nomonsters">
+                                    <label for="-nomonsters">No Monsters</label>
+                                    <br>
+                                    <input type="checkbox" id="-fast" name="-fast">
+                                    <label for="-fast">Fast Monsters</label>
+                                    <br>
+                                    <input type="checkbox" id="-respawn" name="-respawn">
+                                    <label for="-respawn">Monster Respawn</label>
+                                    <br>
+                                    <br>
+                                    <fieldset>
+                                        <legend>
+                                            <input type="checkbox" id="jump" name="jump">
+                                            <label for="jump">Skip title screen</label>
+                                        </legend>
+                                    <label for="-map">Start from level</label>
+                                    <input type="text" id="-map" name="-map">
+                                    <br>
+                                    <label for="-skill">Difficulty</label>
+                                    <select name="-skill" id="-skill">
+                                        <option value="1">I'm too young to die!</option>
+                                        <option value="2">Hey, not too rough</option>
+                                        <option value="3">Hurt me plenty</option>
+                                        <option value="4">Ultra-Violence</option>
+                                        <option value="5">Nightmare</option>
+                                    </select>
+                                    </fieldset>
+                                </fieldset>
+                                <fieldset>
+                                    <legend>Video:</legend>
+                                    <input type="checkbox" id="+fullscreen" name="+fullscreen">
+                                    <label for="+fullscreen">Fullscreen</label>
+                                    <br>
+                                    <label for="+vid_rendermode">Render Mode</label>
+                                    <select name="+vid_rendermode" id="+vid_rendermode">
+                                        <option value="r_opengl">OpenGL (Hardware Accelerated)</option>
+                                        <option value="r_vulkan">Vulkan (If available)</option>
+                                        <option value="r_software">Software</option>
+                                    </select>
+                                    <br>
+                                    <br>
+                                    <fieldset>
+                                        <legend>Resolution:</legend>
+                                        <label for="-width">Width</label>
+                                        <input type="text" id="-width" name="-width">
+                                        <br>
+                                        <label for="-height">Height</label>
+                                        <input type="text" id="-height" name="-height">
+                                    </fieldset>
+                                </fieldset>
+                                <fieldset>
+                                    <legend>Audio:</legend>
+                                    <div>
+                                        <input type="radio" id="enableSounds" name="enableSounds" value="enableSounds" checked>
+                                        <label for="huey">Enable All Sounds</label>
+                                    </div>
+
+                                    <div>
+                                        <input type="radio" id="-nosound" name="-nosound" value="-nosound">
+                                        <label for="-nosound">Disable All Sounds</label>
+                                    </div>
+
+                                    <div>
+                                        <input type="radio" id="-nosfx" name="-nosfx" value="-nosfx">
+                                        <label for="-nosfx">Disable SFX</label>
+                                    </div>
+
+                                    <div>
+                                        <input type="radio" id="-nomusic" name="-nomusic" value="-nomusic">
+                                        <label for="-nomusic">Disable Music</label>
+                                    </div>
+                                </fieldset>
+                                <fieldset>
+                                    <legend>Other:</legend>
+                                    <label for="sourceport">Source Port</label>
+                                    <select name="sourceport" id="sourceport">
+                                        <option value="gzdoom">GZDoom</option>
+                                        <option value="prboom">PrBoom+</option>
+                                        <option value="chocolatedoom">Chocolate Doom</option>
+                                    </select>
+                                </fieldset>
+                            </fieldset>
+                            <button type="submit" id="submitConfig">submit</button>
+                        </div>
+                        <div class="gameinfo">
+                            <fieldset class="fieldmain">
+                                <legend>Title Info:</legend>
+                                <div class="centered">
+                                    <img class="cover-small" src="thumbs/unkown.jpg">
+                                    <!--<input class="editTitle" type="text" id="editTitle" value="Doom 2"><br>-->
+                                    <span id="gameTitle" class="editTitle" role="textbox" contenteditable>Doom 2</span>
+                                    <svg class="editTitle" xmlns="http://www.w3.org/2000/svg"   viewBox="0 0 24 24" fill="none" stroke="#a0a0a06c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-edit"><path d="M20 14.66V20a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h5.34"></path><polygon points="18 2 22 6 12 16 8 16 8 12 18 2"></polygon></svg>
+                                    <br>
+                                    <span id="gameAuthor" class="editAuthor" role="textbox" contenteditable>Id Software</span>
+                                    <svg class="editAuthor" xmlns="http://www.w3.org/2000/svg"   viewBox="0 0 24 24" fill="none" stroke="#a0a0a06c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-edit"><path d="M20 14.66V20a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h5.34"></path><polygon points="18 2 22 6 12 16 8 16 8 12 18 2"></polygon></svg>
+                                    <br>
+                                    <span id="gameYear" class="editYear" role="textbox" contenteditable>1996</span>
+                                    <svg class="editYear" xmlns="http://www.w3.org/2000/svg"   viewBox="0 0 24 24" fill="none" stroke="#a0a0a06c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-edit"><path d="M20 14.66V20a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h5.34"></path><polygon points="18 2 22 6 12 16 8 16 8 12 18 2"></polygon></svg>
+                                    <br>
+                                </div>
+                            </fieldset>
+                        </div>
+
+                    </div> 
+                </div> 
+            </div>
+        </div>
+        <div id="title-bar">
+             <div id="title">
+                 <span style="vertical-align: middle;"><img src="https://raw.githubusercontent.com/zeke/atom-icon/master/old-icon/2.png" style="width:20px;height:20px;"/></span>
+             </div>
+             <div id="title-bar-btns">
+                <a id="min-btn" href="#"><svg class="ctrl" xmlns="http://www.w3.org/2000/svg" width="18px" height="18px" viewBox="0 0 24 24" fill="none" stroke="#4f4f4f" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-minus"><line x1="5" y1="12" x2="19" y2="12"></line></svg></a>
+                <a id="max-btn" href="#"><svg class="ctrl" xmlns="http://www.w3.org/2000/svg" width="18px" height="18px" viewBox="0 0 24 24" fill="none" stroke="#4f4f4f" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-maximize"><path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"></path></svg></a>
+                <a id="close-btn" href="#"><svg class="ctrl" xmlns="http://www.w3.org/2000/svg" width="18px" height="18px" viewBox="0 0 24 24" fill="none" stroke="#4f4f4f" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-x"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg></a>
+             </div>
+        </div>
+        <div class="sidenav">
+            <a href="#"><img src="icons/clock.svg">Recently Played</a>
+            <a class="active" href="#"><img src="icons/apps.svg">All games</a>
+            <a href="#"><img src="icons/bookmark.svg">Doom I</a>
+            <a href="#"><img src="icons/bookmark.svg">Doom II</a>
+            <a href="#"><img src="icons/bookmark.svg">Final Doom</a>
+            <a href="#"><img src="icons/bookmark.svg">Plutonia</a>
+            <a href="#"><img src="icons/bookmark.svg">TNT</a>
+            
+          </div>
+          <div class="main">
+            <h2>All Games</h2>
+            <div id="grid" class="grid">
+                <div id="add-game" class="game">
+                    <div id="add" class="add">+</div>
+                </div>
+            </div>
+          </div>
+        <script>
+        (function () {
+            // Retrieve remote BrowserWindow
+            const {ipcRenderer} = require('electron');
+            function init() {
+                // Close app
+                document.getElementById("close-btn").addEventListener("click", (e) => {
+                    ipcRenderer.send('close-me')
+                });
+                document.getElementById("max-btn").addEventListener("click", (e) => {
+                    ipcRenderer.send('max-me')
+                });
+                document.getElementById("min-btn").addEventListener("click", (e) => {
+                    ipcRenderer.send('min-me')
+                });
+                document.getElementById("add").addEventListener("click", (e) => {
+                    let formInputs = document.querySelectorAll("input");
+                    console.log(formInputs);
+                    document.getElementById("overlay").style.display = "block";
+                    ipcRenderer.send('requestWizard')
+                });
+                document.getElementById("submitConfig").addEventListener("click", (e) => {
+                    appendData()
+                });
+            };
+                    //APPEND DATA
+            function appendData(){
+                //when the submit button is clicked on the iwad wizard screen, it calls this function which creates a tmp json object w/ null values for everything.
+                //this function then goes one by one filling in information from the form.
+                var tmp = {
+                    "null": {
+                        "metadata": {
+                            "name": "null",
+                            "author": "null",
+                            "year": "null",
+                            "grid": "null"
+                        },
+                        "game": {
+                            "sourceport": "null",
+                            "-iwad": "null",
+                            "modded":"null",
+                            "mods": {},
+                            "-config": "null"
+                        },
+
+                        "opts": {
+
+                            "enableSounds": "null",
+                            "-nosound": "null",
+
+                            "-nosfx": "null",
+                            "-nomusic": "null",
+
+                            
+                            "-nomonsters": "null",
+                            "-fast": "null",
+                            "-respawn": "null",
+
+                            "-width": "null",
+                            "-height": "null",
+                            "+fullscreen": "null",
+                            "+vid_rendermode": "null",
+
+                            "custom": "null",
+                            "jumpFlags":{
+                                "enabled":"null",
+                                "-map":"null",
+                                "-skill":"null"
+                            }
+                        }
+
+                    },  
+                }
+                //so i made the opts not nested. basically you can access all the options through the opts object without having to go down an extra object depending on what the options were related to.
+                //this helps to mitigate issues i encountered trying to parse this recursively.
+
+                tmp["null"]["metadata"]["name"] = document.getElementById("gameTitle").innerHTML; 
+                tmp["null"]["metadata"]["author"] = document.getElementById("gameAuthor").innerHTML;
+                tmp["null"]["metadata"]["year"] = document.getElementById("gameYear").innerHTML;  
+                tmp["null"]["metadata"]["grid"] = "thumbs/unkown.jpg"
+                
+                //get all inputs (it's missing the metadata info, because the title, year, and author uses span)
+                //also there are <select> tags for things like the dropdowns. Gotta add that in too.
+                var opts = document.querySelectorAll("input, select, span")
+                
+                
+                opts.forEach((element) => {
+                    if(element.type == "checkbox"){
+                        //these would be checkboxes for flags such as nomonsters and nosfx.
+                        if(element.checked){
+                            if(tmp["null"]["opts"][element.id.toString()]){ //check to make sure the flags even exist. they should but this is a failsafe.i
+                                //set the flags to true
+                                tmp["null"]["opts"][element.id.toString()] = true
+
+                                
+                            }else{
+                                if(element.id.toString() == "jump"){
+                                    //fill out the configuration data for when the user wants to jump to a certain map
+                                    
+                                    tmp["null"]["opts"]["jumpFlags"]["enabled"] = true
+                                    tmp["null"]["opts"]["jumpFlags"]["-map"] = document.getElementById("-map").value
+                                    tmp["null"]["opts"]["jumpFlags"]["-skill"] = document.getElementById("-skill").value
+                                    
+                                }else{
+                                    console.log(tmp["null"]["opts"][element.id.toString()])
+                                    console.log("Uh oh. Cannot find " + element.id + " in the config.")
+                                }
+                            }
+                        }
+                    }
+                    if(element.type == "text"){
+                        //these would be text boxes, usually 
+                        if(element.value != ""){
+                            if(tmp["null"]["opts"][element.id.toString()]){
+                                tmp["null"]["opts"][element.id.toString()] = element.value
+                            }else{
+                                console.log("Uh oh. Cannot find " + element.id + " in the config.")
+                            }
+                            console.log(element.id + " " + element.value)
+                        }else{
+                            console.log("Nothing here... skipping")
+                        }
+                    }
+                    if(element.type == "radio"){
+                        console.log("Idk what  to do here.")
+                    }
+                    if(element.type == "select-one"){
+                        //these would be text boxes, usually 
+                        if(element.id == "sourceport"){
+                            tmp["null"]["game"]["sourceport"] = element.value
+                        }
+                        if(element.id == "-iwad"){
+                            tmp["null"]["game"]["-iwad"] = element.value
+                        }
+                    }
+                })
+
+                console.log(tmp)
+                ipcRenderer.send('updateConfig', tmp)
+            }
+
+            document.onreadystatechange =  () => {
+                if (document.readyState == "complete") {
+                    init();
+                }
+            };
+
+            ipcRenderer.on('addgame', (event, data) => {
+                var game = document.createElement("div")
+                game.className = "game"
+                var image = document.createElement("img")
+                image.src = data.cover
+                game.appendChild(image)
+                var h3 = document.createElement("h3")
+                h3.innerHTML = data.name
+                var p = document.createElement("p")
+                p.innerHTML = data.author + ', ' + data.year
+                game.appendChild(h3)
+                game.appendChild(p)
+                game.addEventListener("click", launchGame); 
+                game.setAttribute("gameName",data.name)
+                document.getElementById("grid").insertBefore(game, document.getElementById("add-game"))
+            });
+            ipcRenderer.on('removeOverlay', (event, data) => {
+                console.log("got it")
+                document.getElementById("overlay").style.display = "none";
+            });
+            //document.getElementById("cancel-addgame").addEventListener("click", (e) => {
+            //    document.getElementById("overlay").style.display = "none";
+            //});
+            // document.getElementById("add2List").addEventListener("click", (e) => {
+            //     var li = document.createElement("li")
+            //     li.innerHTML = document.getElementById("modFile").value
+            //     document.getElementById("files").appendChild(li)
+            //     //for some reason this is appending "C:\fakepath\file" which will most definitely be problematic when it comes to adding it to the records.
+            //     //will ignore for now, 9/28/22@9:27PM
+            // });
+            //document.getElementById("getJsonData").addEventListener("click", (e) => {
+            //    ipcRenderer.send('newWindowWithData', parseJson())
+            //});
+            function launchGame(event){
+                gamename = event.currentTarget.getAttribute("gameName")
+                ipcRenderer.send('launchGame',gamename)
+            }
+            
+        
+        })();
+        </script>
+    </body>
+</html>
